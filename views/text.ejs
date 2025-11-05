@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FileSystems Page</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+
+    <form action="/read" method="post">
+        <button type="submit" value="TextFile_1" name="selected">Open TextFile_1</button>
+        <button type="submit" value="TextFile_2" name="selected">Open TextFile_2</button>
+        <button type="submit" value="TextFile_3" name="selected">Open TextFile_3</button>
+
+    </form>
+    <form action="/save" method="post">
+        <h2>Text File Contents</h2>
+        <% if (content) { %>
+            <input type="hidden" name="selected" value="<%= selected %>" />
+            <textarea name="content"><%= content %></textarea>
+        <% } else { %>
+            <textarea name="content" placeholder="Select a text file to edit"></textarea>
+        <% } %>
+        <button type="submit">save</button>
+    </form>
+
+    <% if (typeof message != 'undefined') { %>
+    <script>
+        alert("<%= message %>")
+    </script>
+    <% } %>
+
+</body>
+
+</html>
